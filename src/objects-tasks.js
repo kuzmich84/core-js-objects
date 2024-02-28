@@ -172,7 +172,7 @@ function Rectangle(width, height) {
   this.width = width;
   this.height = height;
 
-  this.getArea = function () {
+  this.getArea = function getArea() {
     return this.width * this.height;
   };
 }
@@ -232,8 +232,18 @@ function fromJSON(/* proto, json */) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
+function sortCitiesArray(arr) {
+  const resultArr = arr;
+
+  resultArr.sort((a, b) => {
+    if (a.country > b.country) return 1;
+    if (a.country < b.country) return -1;
+    if (a.city > b.city) return 1;
+    if (a.city < b.city) return -1;
+    return 1;
+  });
+
+  return resultArr;
 }
 
 /**
